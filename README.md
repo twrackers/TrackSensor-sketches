@@ -10,3 +10,5 @@ This sketch is designed to run on an Arduino-class processor, such as the Arduin
 
 1. Accept commands via I2C from a central processor and return changes of sensor states to the central processor.  This sketch acts as an I2C Slave devie with a configurable address.
 2. Repeatedly poll the sensor nodes connected to it by SPI (acting as the SPI Master device) to update the mask bytes in the nodes and receive the current status of all sensor channels.
+
+This sketch requires my StateMachine library, available from GitHub at https://github.com/twrackers/StateMachine-library.
