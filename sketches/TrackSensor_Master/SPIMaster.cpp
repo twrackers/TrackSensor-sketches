@@ -66,7 +66,7 @@ SPIMaster::SPIMaster() :
   // Initialize masks for slave node enumeration.
   // Test for up to one more than max.
   register byte* p = m_masks;
-  for (int i = 0; i <= MAX_NODES; ++i) {
+  for (byte i = 0; i <= MAX_NODES; ++i) {
     *p++ = 0x00;
   }
   // Initially look for one node.
@@ -128,7 +128,7 @@ void SPIMaster::spiTransaction(int n)
   // and at the same time receive status bytes.
   byte* txp = m_masks;
   byte* rxp = m_rxbuf;
-  for (int i = 0; i < n; ++i) {
+  for (byte i = 0; i < n; ++i) {
     *rxp++ = SPI.transfer(*txp++);
   }
   // Allow time for slaves to complete.
@@ -218,17 +218,17 @@ bool SPIMaster::update()
           // Adjust it down to correct value.
           --m_nodes;
           // Initialize masks to default values.
-          for (int i = 0; i < m_nodes; ++i) {
+          for (byte i = 0; i < m_nodes; ++i) {
             m_masks[i] = DEFAULT_MASK;
           }
           // Initialize status-change detection.
           register byte* sp = m_rxbuf;
           register byte* dp = m_sensors;
-          for (int i = 0; i < m_nodes; ++i) {
+          for (byte i = 0; i < m_nodes; ++i) {
             *dp++ = *sp++;
           }
           // Enter normal state loop.
-          m_delay = millis() + PACE;
+          m_pacer = millis() + PACE;
           m_state = ePace;
         } else if (m_nodes <= MAX_NODES) {
           // May not have found all nodes yet,
