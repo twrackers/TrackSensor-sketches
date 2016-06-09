@@ -105,7 +105,7 @@ bool I2CSlave::update()
           RingBuffer& rb = m_spi.getRingBuffer();
           if (!rb.isEmpty()) {
             m_requested = rb.pop();
-            digitalWrite(2, LOW);
+            digitalWrite(LOOK_AT_ME, LOW);
             m_timeout = millis() + sm_timeout;
           }
         }
