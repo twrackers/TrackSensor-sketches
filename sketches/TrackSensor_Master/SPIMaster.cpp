@@ -31,7 +31,7 @@
  * and so on.  The slave nodes boot up with their masks set to 
  * 0x00 as well.  A mask bit of 0 forces its status bit to 1.  
  * As long as the number of 0x00 mask bytes sent doesn't exceed 
- * the number of slave nodess, the received status bytes will 
+ * the number of slave nodes, the received status bytes will 
  * all be 0xFF.  
  * 
  * When the number of mask bytes sent exceeds the number of
