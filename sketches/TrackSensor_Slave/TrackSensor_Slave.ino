@@ -156,7 +156,7 @@ void readAnalogs()
 void loop()
 {
   // Time to read the analog inputs again?
-  if (millis() >= g_next) {
+  if ((millis() - g_next) >= 0) {
     // Update analogs.
     readAnalogs();
     // Pace the acquisition loop.
