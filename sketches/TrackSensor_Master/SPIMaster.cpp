@@ -193,7 +193,7 @@ bool SPIMaster::update()
     return false;
   }
   // If a programmed delay has elapsed...
-  if (millis() >= m_delay) {
+  if ((millis() - m_delay) >= 0) {
     // Switch according to current state.
     switch(m_state) {
       case eEnumReady:
@@ -245,7 +245,7 @@ bool SPIMaster::update()
       case ePace:
         // If time for acquisition cycle,
         // go to ready state.
-        if (millis() >= m_pacer) {
+        if ((millis() - m_pacer) >= 0) {
           m_pacer += PACE;
           m_state = eReady;
         }
