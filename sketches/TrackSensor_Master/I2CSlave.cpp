@@ -101,14 +101,14 @@ bool I2CSlave::update()
       } 
       break;
     case eAwaitRequest:
-      if ((millis() - m_timeout) >= 0) {
+      if ((long) (millis() - m_timeout) >= 0) {
         m_request = false;
         m_requested = 0;
         m_state = m_active ? eActive : eIdle;
       }
       break;
     case eAvail:
-      if ((millis() - m_timeout) >= 0) {
+      if ((long) (millis() - m_timeout) >= 0) {
         m_request = false;
         m_requested = 0;
         m_state = eActive;
