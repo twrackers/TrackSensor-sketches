@@ -1,14 +1,14 @@
-#ifndef _I2C_SLAVE__H_
-#define _I2C_SLAVE__H_
+#ifndef _I2C_PERIPHERAL__H_
+#define _I2C_PERIPHERAL__H_
 
 #include <Wire.h>
 #include <StateMachine.h>
 
-#include "SPIMaster.h"
-#include "TrackSensor_Master.h"
-#include "I2C_Master.h"
+#include "SPICentral.h"
+#include "TrackSensor_Controller.h"
+#include "I2C_Central.h"
 
-class I2CSlave : public StateMachine
+class I2CPeripheral : public StateMachine
 {
   private:
     /*
@@ -32,11 +32,11 @@ class I2CSlave : public StateMachine
     static const unsigned long sm_timeout = 50UL;
     
   public:
-    I2CSlave(
+    I2CPeripheral(
       const byte addr,
       CALLBACK1 receive,
       CALLBACK0 request,
-      SPIMaster& spi
+      SPICentral& spi
     );
     void begin();
     void reqNumNodes();

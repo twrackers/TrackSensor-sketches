@@ -1,8 +1,8 @@
-#ifndef _I2C_MASTER__H_
-#define _I2C_MASTER__H_
+#ifndef _I2C_COMMANDS__H_
+#define _I2C_COMMANDS__H_
 
 // NOTE: A copy of this file also exists under
-// the I2C_Master sketch.  Both must
+// the I2C_Central sketch.  Both must
 // contain the same content.
 
 // Each command code has a Hamming distance

@@ -1,32 +1,32 @@
-#ifndef _SPI_MASTER__H_
-#define _SPI_MASTER__H_
+#ifndef _SPI_CENTRAL__H_
+#define _SPI_CENTRAL__H_
 
 #include <SPI.h>
 #include <StateMachine.h>
-#include <RingBuffer.h>
+#include <FIFO.h>
 
-// One of the following should be set to 1, the others to 0.
-#define SLAVE_TEST 1
-#define SLAVE_ARDUINO_UNO 0
-#define SLAVE_ARDUINO_MICRO 0
-#define SLAVE_PRO_TRINKET 0
+// Exactly one of the following should be set to 1, the others to 0.
+#define PERI_TEST 1
+#define PERI_ARDUINO_UNO 0
+#define PERI_ARDUINO_MICRO 0
+#define PERI_PRO_TRINKET 0
 
-class SPIMaster : public StateMachine
+class SPICentral : public StateMachine
 {
   private:
     static const unsigned long PACE = 50;  // msec
     static const int MAX_NODES = 16;
 
-#if SLAVE_ARDUINO_UNO
+#if PERI_ARDUINO_UNO
     static const byte DEFAULT_MASK = 0x3F;
-#elif SLAVE_ARDUINO_MICRO
+#elif PERI_ARDUINO_MICRO
     static const byte DEFAULT_MASK = 0xFF; // using first 8 of 12
-#elif SLAVE_PRO_TRINKET
+#elif PERI_PRO_TRINKET
     static const byte DEFAULT_MASK = 0xFF;
-#elif SLAVE_TEST
+#elif PERI_TEST
     static const byte DEFAULT_MASK = 0x03;
 #else
-#error Must specify slave node type.
+#error Must specify peripheral node type.
 #endif
 
     enum E_STATE {
@@ -46,9 +46,9 @@ class SPIMaster : public StateMachine
     int m_iters = 0;
 
   public:
-    SPIMaster();
+    SPICentral();
     void begin();
-    RingBuffer& getRingBuffer();
+    FIFO& getFifo();
     byte getNumNodes() const;
     byte getNodeSensors(const byte node) const;
     void setNodeMask(const byte node, const byte mask);
