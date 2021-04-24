@@ -36,7 +36,7 @@ class SPICentral : public StateMachine
       eFault
     } m_state = eEnumReady;
 
-    RingBuffer m_rb;
+    FIFO m_fifo;
     unsigned long m_delay = 0;
     unsigned long m_pacer = 0;
     byte m_nodes = 0;

@@ -92,7 +92,7 @@ void SPICentral::begin()
 }
 
 // Returns reference to this object's ring buffer.
-FIFO& SPICentral::getFIFO()
+FIFO& SPICentral::getFifo()
 {
   return m_fifo;
 }

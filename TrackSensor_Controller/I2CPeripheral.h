@@ -6,7 +6,7 @@
 
 #include "SPICentral.h"
 #include "TrackSensor_Controller.h"
-#include "I2C_Central.h"
+#include "I2C_Commands.h"
 
 class I2CPeripheral : public StateMachine
 {
@@ -27,7 +27,7 @@ class I2CPeripheral : public StateMachine
     bool m_request;
     bool m_active;
     unsigned long m_timeout;
-    SPIMaster& m_spi;
+    SPICentral& m_spi;
 
     static const unsigned long sm_timeout = 50UL;
     
@@ -48,4 +48,3 @@ class I2CPeripheral : public StateMachine
 
 
 #endif
-
