@@ -1,6 +1,6 @@
 # TrackSensor-sketches #
 
-These Arduino sketches form the software components for my model railroad track sensor design.  More information can be found at [modelrrelectronics.wordpress.com/track-sensors](https://modelrrelectronics.wordpress.com/track-sensors).
+These Arduino sketches form the software components for my model railroad track sensor design.  More information can be found at [https://modelrailroadelectronics.blog/track-sensors/](https://modelrailroadelectronics.blog/track-sensors/).
 
 ## TrackSensor_Node ##
 
